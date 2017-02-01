@@ -1,0 +1,25 @@
+#pages {
+  height: 100%;
+  @media (max-height: 400px) {
+    height: 350px;
+  }
+  @media (max-width: 768px) {
+    height: 350px;
+  }
+}
+
+.icon-spin {
+  animation: rotate360 1000ms 4 ease-in-out 1s;
+}
+
+@keyframes rotate360 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+
+
