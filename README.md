@@ -35,7 +35,8 @@ For modeling purposes - we need a glossary, to keep in mind "what is what" and "
 `Entry Point` or `Selling Platform` - this is a MOCK entry point of our application. Simple view in which the `Worker` can request a ticket
   for handling the problem with *Selling Platform*   
 `ACME` - Company that bought the *Selling Platform* to sell their goods.  
-`ACME Worker` or `Worker` - The Guy who will generate the `Ticket` to handle by `SS Team`.    
+`ACME Worker` or `Worker` - The Guy who will generate the `Ticket` to handle by `SP Team`.   
+`BReporter` or `Bug Reporter` - In our case it is a Worker. But looking up from *STS* Perspective, Worker does not exist. But there is more 'abstract' Person : Someone Who Reports Problems : so in our case: `BReporter`.  
 `Help desk team` or `Selling Platform Team` (abbr. `SP Team`) - Team of `Supporters` and `Developers` which delivers the *Selling Platform* 
    to *ACME* and handle the bugs inside this app.  
 `Supporter` - Person who will handle ticket using the `STS` and decide about its future.  
