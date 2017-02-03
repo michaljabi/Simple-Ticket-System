@@ -4,10 +4,11 @@ var path = require('path');
 module.exports = {
 
   entry: [
-    './client/src/index.jsx',
+    './client/src/index.jsx'
   ],
   devServer: {
     inline: true,
+    historyApiFallback: true,
     contentBase: './client/dist',
     port: 3000
   },

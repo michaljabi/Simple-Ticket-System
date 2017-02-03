@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import NavigationBar from './main/NavigationBar';
 import Footer from './main/Footer';
 require("./sellingplatformapp.scss");
+
+const contextTypes = {
+  router: PropTypes.object.isRequired
+};
 
 class SellingPlatformApp extends React.Component {
 
@@ -11,7 +15,7 @@ class SellingPlatformApp extends React.Component {
   }
 
   openSimpleTicketSystem(){
-     console.log("Opening STS....");
+    this.context.router.push( '/report-a-problem' );
   }
   
   render () {
@@ -20,6 +24,7 @@ class SellingPlatformApp extends React.Component {
 
     return (
       <div>
+        <h1></h1>
         <NavigationBar username={username} />
           <div id="pages">
             {this.props.children}
@@ -30,7 +35,6 @@ class SellingPlatformApp extends React.Component {
   }
 }
 
-SellingPlatformApp.propTypes = {};
-
+SellingPlatformApp.contextTypes = contextTypes;
 
 export default SellingPlatformApp;

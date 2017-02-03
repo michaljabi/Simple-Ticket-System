@@ -3,7 +3,7 @@ process.env.NODE_ENV = 'test';
 import { describe, it } from "mocha";
 import chai from "chai";
 import chaiHttp from "chai-http";
-import server from '../index';
+import server from '../../index';
 
 let expect = chai.expect;
 chai.use( chaiHttp );

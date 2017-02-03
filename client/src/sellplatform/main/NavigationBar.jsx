@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import isRequired from '../utils/is-required';
 
 export default function NavigationBar({username = isRequired('username', 'NavigationBar')}) {
@@ -11,9 +12,9 @@ export default function NavigationBar({username = isRequired('username', 'Naviga
             <span className="navbar-brand">ACME Selling </span>
           </div>
           <ul className="nav navbar-nav">
-            <li className="active" ><a href="#">Products</a></li>
-            <li><a href="#">Clients</a></li>
-            <li><a href="#">Reports</a></li>
+            <li><Link to="/">Products</Link></li>
+            <li><Link to="/clients">Clients</Link></li>
+            <li><Link to="/reports">Reports</Link></li>
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li style={{paddingTop: 6, paddingLeft: 10}}>
