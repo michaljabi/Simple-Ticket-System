@@ -56,4 +56,4 @@ That will inform `Help desk team` something is going on.
 `Supporter` will be informed about the `bug` and after log in to the `STS` panel - 
 perform some actions to resolve the `nasty bug` and close the generated `ticket`...
  
- 
+See and follow all stories created while [modeling process](docs/MODELING.md) !  
