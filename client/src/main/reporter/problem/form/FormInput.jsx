@@ -8,6 +8,7 @@ const propTypes = {
   value: React.PropTypes.string,
   type: React.PropTypes.string,
   placeholder: React.PropTypes.string,
+  isRequired: React.PropTypes.bool,
   options: React.PropTypes.object,
   error: React.PropTypes.string
 };
@@ -17,13 +18,13 @@ const defaultProps = {
   options : {}
 };
 
-export const FormInput = ({name, label, type, placeholder, onChange, value, options, error}) => {
+export function FormInput ({name, label, type, placeholder, onChange, isRequired, value, options, error}) {
 
   const hasErrorClass = 'has-error has-feedback';
 
   return (
     <div className={'form-group ' + (error ? hasErrorClass : '')} >
-      <label htmlFor={name} className="control-label">{label}</label>
+      <label htmlFor={name} className="control-label">{isRequired && '* '}{label}</label>
       <input
         name={name}
         type={type}

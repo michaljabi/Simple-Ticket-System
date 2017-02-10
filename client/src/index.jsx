@@ -5,16 +5,19 @@ import SellingPlatformApp from './sellplatform/SellingPlatformApp';
 import ProductsManagementPage from './sellplatform/pages/ProductsManagementPage';
 import ClientsPage from './sellplatform/pages/ClientsPage';
 import ReportsPage from './sellplatform/pages/ReportsPage';
-import StsApp from './main/StsApp';
+import StsRoutes from './main/StsRoutes'
+
+import SimpleTicketSystemApp from './main/SimpleTicketSystemApp';
+import { ReportProblemPage } from './main/reporter/problem/ReportProblemPage';
 
 render(
-  <Router history={browserHistory} >
-    <Route path="/" component={SellingPlatformApp} >
+  <Router history={browserHistory}>
+    <Route path="/" component={SellingPlatformApp}>
       <IndexRoute component={ProductsManagementPage}/>
-      <Route path="/clients" component={ClientsPage}/>
-      <Route path="/reports" component={ReportsPage}/>
+      <Route path="clients" component={ClientsPage}/>
+      <Route path="reports" component={ReportsPage}/>
     </Route>
-    <Route path="/report-a-problem" component={StsApp} />
+    { StsRoutes }
   </Router>,
-  document.getElementById('selling-platform-entry-point')
+  document.getElementById( 'selling-platform-entry-point' )
 );

@@ -1,18 +1,19 @@
 import React from 'react'
-import Recaptcha from 'react-recaptcha';
 import { FormInput } from './FormInput';
 import { FormSelect } from './FormSelect';
 import { FormButton } from './FormButton';
 import { FormTextarea } from './FormTextarea';
+import { FormCaptcha } from './FormCaptcha';
+import { validate } from './formValidation';
 
 const propTypes = {
-  onFormCancel : React.PropTypes.func.isRequired
+  onFormCancel: React.PropTypes.func.isRequired
 }
 
 export class ReportTicketForm extends React.Component {
 
-  constructor (props){
-    super(props);
+  constructor ( props ) {
+    super( props );
   }
 
   state = {
@@ -20,82 +21,99 @@ export class ReportTicketForm extends React.Component {
     component: 'page-clients',
     description: '',
     email: '',
-    errors : {},
-    isLoading : false
+    isVerified: false,
+    errors: {},
+    isLoading: false
   };
 
-  onInputChange = ( evt ) => {
-    this.setState( { [evt.target.name]: evt.target.value } );
+  handleInputChange = ( evt ) => {
+    const errors = { ...this.state.errors };
+    errors[ evt.target.name ] = '';
+
+    this.setState( { [evt.target.name]: evt.target.value, errors } );
   };
 
-  onLoadCaptchaCallback = () => {
+  handleLoadCaptchaCallback = () => {
 
   };
 
-  onFormSubmit = (evt) => {
-    evt.preventDefault();
-  };
-
-  verifyCaptchaCallback = ( data ) => {
+  handleVerifyCallback = ( data ) => {
     console.log( "verify", data );
-    this.setState({isSubmitDisabled : false});
+    this.setState( { isVerified: true } );
   };
 
-  render(){
+  handleFormSubmit = ( evt ) => {
+    evt.preventDefault();
+    if ( this.validateForm() ) {
+
+    }
+  };
+
+  validateForm = () => {
+    const errors = validate( this.state );
+    this.setState( { errors } );
+    return !errors;
+  };
+
+
+  render () {
     const optionListFeed = [
-      {name: 'Clients page', value: 'page-clients'},
-      {name: 'Products list', value: 'page-products'},
-      {name: 'Other part of the Selling Platform', value: 'other-part'},
+      { name: 'Clients page', value: 'page-clients' },
+      { name: 'Products list', value: 'page-products' },
+      { name: 'Other part of the Selling Platform', value: 'other-part' },
     ];
 
     return (
-      <form onSubmit={this.onFormSubmit}>
+      <form onSubmit={this.handleFormSubmit}>
         <FormInput
           name="title"
           label="What went wrong?"
           placeholder="Short description"
-          onChange={this.onInputChange}
+          onChange={this.handleInputChange}
           value={this.state.title}
           error={this.state.errors.title}
-          options={{maxLength:255}}
+          isRequired={true}
+          options={{ maxLength: 255 }}
         />
         <FormSelect
           name="component"
           label="Specify where it happens:"
           options={optionListFeed}
-          onChange={this.onInputChange}
+          onChange={this.handleInputChange}
           value={this.state.component}
+          error={this.state.errors.component}
         />
         <FormTextarea
           name="description"
           label="Give us more details:"
-          onChange={this.onInputChange}
+          onChange={this.handleInputChange}
           value={this.state.description}
-          error=''
+          error={this.state.errors.description}
         />
         <FormInput
           name="email"
           type="email"
           label="We will inform you about resolution process:"
           placeholder="Enter valid e-mail address"
-          onChange={this.onInputChange}
+          onChange={this.handleInputChange}
           value={this.state.email}
-          error=''
+          error={this.state.errors.email}
         />
-        <div className="form-group">
-          <Recaptcha theme="light" render="explicit" sitekey="6Lf-w8sSAAAAAMjaicvzOhHuWykW10W2Yp5ioG7e"
-            verifyCallback={this.verifyCaptchaCallback}
-            onloadCallback={this.onLoadCaptchaCallback}
-          />
-        </div>
+        <FormCaptcha
+          verifyCallback={this.handleVerifyCallback}
+          onLoadCallback={this.handleLoadCaptchaCallback}
+          error={this.state.errors.isVerified}
+        />
         <div className="form-buttons">
-          <FormButton label="Cancel" className="pull-left" onClick={this.props.onFormCancel} icon="remove" />
-          <FormButton label="Submit this problem" type="submit" className="btn-primary pull-right" icon="upload" options={{disabled: this.state.isLoading}} />
+          <FormButton label="Cancel" className="pull-left" onClick={this.props.onFormCancel} icon="remove"/>
+          <FormButton label="Submit this problem" type="submit" className="btn-primary pull-right" icon="upload"
+                      options={{ disabled: !this.state.isVerified }}/>
         </div>
       </form>
     );
   }
-};
+}
+;
 
 
 ReportTicketForm.propTypes = propTypes;

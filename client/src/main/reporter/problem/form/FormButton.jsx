@@ -15,7 +15,7 @@ const defaultProps = {
   options : {}
 };
 
-export const FormButton = ({label, type, className, onClick, options, icon}) => {
+export function FormButton ({label, type, className, onClick, options, icon}) {
 
   return (
       <button type={type} className={`btn ${className}`} onClick={onClick} {...options}>

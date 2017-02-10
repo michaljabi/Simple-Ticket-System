@@ -1,7 +1,5 @@
 import React from 'react';
 
-import {ReportProblemPage} from './reporter/problem'
-
 
 
 class StsApp extends React.Component {
@@ -10,7 +8,7 @@ class StsApp extends React.Component {
 
     return (
       <div>
-        <ReportProblemPage />
+        {this.props.children}
       </div>
     )
   }

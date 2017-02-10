@@ -14,7 +14,7 @@ const defaultProps = {
   options: []
 };
 
-export const FormSelect = ( { name, label, options, onChange, value, error } ) => {
+export function FormSelect ( { name, label, options, onChange, value, error } ) {
 
   const hasErrorClass = 'has-error has-feedback';
 

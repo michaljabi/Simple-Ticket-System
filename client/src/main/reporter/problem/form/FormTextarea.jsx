@@ -13,7 +13,7 @@ const defaultProps = {
   rows : 5
 };
 
-export const FormTextarea = ({name, label, rows, onChange, value, error}) => {
+export function FormTextarea ({name, label, rows, onChange, value, error}) {
 
   const hasErrorClass = 'has-error has-feedback';
 

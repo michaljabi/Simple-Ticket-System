@@ -15,7 +15,7 @@ class SellingPlatformApp extends React.Component {
   }
 
   openSimpleTicketSystem(){
-    this.context.router.push( '/report-a-problem' );
+    this.context.router.push( '/sts/report-a-problem' );
   }
   
   render () {
