@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-class StsApp extends React.Component {
+class SimpleTicketSystemApp extends React.Component {
 
   render () {
 
@@ -14,7 +14,4 @@ class StsApp extends React.Component {
   }
 }
 
-StsApp.propTypes = {};
-
-
-export default StsApp;
+export default SimpleTicketSystemApp;

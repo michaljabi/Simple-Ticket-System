@@ -10,7 +10,7 @@ chai.use( chaiHttp );
 
 describe( 'User Controller actions (api/users)', () => {
 
-  it( '/ it should GET an Array of MOCK STS users', ( done ) => {
+  it.skip( '/ it should GET an Array of MOCK STS users', ( done ) => {
     chai.request( server )
       .get( '/api/users' )
       .end( ( err, res ) => {

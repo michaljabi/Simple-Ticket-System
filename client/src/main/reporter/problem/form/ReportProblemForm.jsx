@@ -4,7 +4,8 @@ import { FormSelect } from './FormSelect';
 import { FormButton } from './FormButton';
 import { FormTextarea } from './FormTextarea';
 import { FormCaptcha } from './FormCaptcha';
-import { validate } from './formValidation';
+import { validateProblemReportForm } from './validateProblemReport';
+import { reportProblemAction } from '../reportProblemAction';
 
 const propTypes = {
   onFormCancel: React.PropTypes.func.isRequired
@@ -16,12 +17,16 @@ export class ReportTicketForm extends React.Component {
     super( props );
   }
 
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired
+  }
+
   state = {
     title: '',
     component: 'page-clients',
     description: '',
     email: '',
-    isVerified: false,
+    isVerified: true,
     errors: {},
     isLoading: false
   };
@@ -38,19 +43,24 @@ export class ReportTicketForm extends React.Component {
   };
 
   handleVerifyCallback = ( data ) => {
-    console.log( "verify", data );
     this.setState( { isVerified: true } );
   };
 
   handleFormSubmit = ( evt ) => {
     evt.preventDefault();
     if ( this.validateForm() ) {
-
+      reportProblemAction( this.state )
+        .then( ( data ) => {
+          this.context.router.push( `/sts/ticket/${data.ticket}` );
+        } )
+        .catch( ( errors ) => {
+          this.setState( { errors } );
+        } );
     }
   };
 
   validateForm = () => {
-    const errors = validate( this.state );
+    const errors = validateProblemReportForm( this.state );
     this.setState( { errors } );
     return !errors;
   };
@@ -65,6 +75,7 @@ export class ReportTicketForm extends React.Component {
 
     return (
       <form onSubmit={this.handleFormSubmit}>
+        {this.state.errors.__connection && <span className="has-error">{this.state.errors.__connection}</span>}
         <FormInput
           name="title"
           label="What went wrong?"

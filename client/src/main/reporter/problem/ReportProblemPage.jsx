@@ -8,11 +8,11 @@ export class ReportProblemPage extends React.Component {
     router: React.PropTypes.object.isRequired
   }
 
-  onFormCancel  = (evt) => {
+  handleFormCancel  = (evt) => {
     evt.preventDefault();
-    console.dir(this);
     this.context.router.push( '/' );
   };
+
   
   render () {
 
@@ -22,7 +22,7 @@ export class ReportProblemPage extends React.Component {
         <div>
           <div className="main container row">
             <div className="col-md-8">
-              <ReportTicketForm onFormCancel={this.onFormCancel} />
+              <ReportTicketForm onFormCancel={this.handleFormCancel}  />
             </div>
             <Explanation />
           </div>
@@ -31,7 +31,7 @@ export class ReportProblemPage extends React.Component {
       </div>
     );
   }
-};
+}
 
 
 
