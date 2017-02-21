@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function Footer () {
+export default function Footer () {
   return (
     <div>
       <footer className="container" style={{backgroundColor: '#d9edf7'}}>

@@ -26,8 +26,8 @@ export class ReportTicketForm extends React.Component {
     component: 'page-clients',
     description: '',
     email: '',
-    isVerified: true,
     errors: {},
+    isVerified: true,
     isLoading: false
   };
 

@@ -1,5 +1,3 @@
 export { ReportProblemPage } from './ReportProblemPage'
-export { Header } from './Header'
 export { ReportTicketForm } from './form/ReportProblemForm'
 export { Explanation } from './Explanation'
-export { Footer } from './Footer'

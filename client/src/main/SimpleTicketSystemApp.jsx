@@ -1,6 +1,6 @@
 import React from 'react';
-
-
+import Header from './layout/Header';
+import Footer from './layout/Footer';
 
 class SimpleTicketSystemApp extends React.Component {
 
@@ -8,7 +8,11 @@ class SimpleTicketSystemApp extends React.Component {
 
     return (
       <div>
-        {this.props.children}
+        <Header/>
+        <div>
+          {this.props.children}
+        </div>
+        <Footer/>
       </div>
     )
   }

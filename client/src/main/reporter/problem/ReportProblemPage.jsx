@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, ReportTicketForm, Explanation, Footer } from './index'
+import { ReportTicketForm, Explanation } from './index'
 require( './report-problem-page.scss' );
 
 export class ReportProblemPage extends React.Component {
@@ -12,22 +12,16 @@ export class ReportProblemPage extends React.Component {
     evt.preventDefault();
     this.context.router.push( '/' );
   };
-
   
   render () {
-
     return (
       <div>
-        <Header />
-        <div>
-          <div className="main container row">
-            <div className="col-md-8">
-              <ReportTicketForm onFormCancel={this.handleFormCancel}  />
-            </div>
-            <Explanation />
+        <div className="main container row">
+          <div className="col-md-8">
+            <ReportTicketForm onFormCancel={this.handleFormCancel}/>
           </div>
+          <Explanation />
         </div>
-        <Footer/>
       </div>
     );
   }

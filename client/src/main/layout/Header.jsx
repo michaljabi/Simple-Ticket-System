@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router';
 
-export function Header () {
+export default function Header () {
 
   return (
     <div>
