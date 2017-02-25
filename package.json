@@ -6,9 +6,9 @@
   "scripts": {
     "test": "jest --watch",
     "test-server": "./node_modules/.bin/mocha \"server/tests/**/*.test.js\" --watch --recursive --require babel-register",
-    "start": "./node_modules/.bin/webpack-dev-server --env development",
     "start-server": "nodemon --watch server --exec babel-node -- server/index.js",
-    "build": "./node_modules/.bin/webpack --env production"
+    "start": "webpack-dev-server --config config/webpack.dev.config.js --display-error-details --open",
+    "build": "./node_modules/.bin/webpack --progress --env=prod --define process.env.NODE_ENV='production'"
   },
   "jest": {
     "testPathDirs": [

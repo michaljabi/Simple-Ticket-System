@@ -24,7 +24,6 @@ class SellingPlatformApp extends React.Component {
 
     return (
       <div>
-        <h1></h1>
         <NavigationBar username={username} />
           <div id="pages">
             {this.props.children}
