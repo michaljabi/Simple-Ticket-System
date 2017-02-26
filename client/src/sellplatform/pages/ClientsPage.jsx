@@ -5,9 +5,7 @@ const propTypes = {};
 const defaultProps = {};
 
 class ClientsPage extends React.Component {
-
   
-
   render () {
     return (
       <div>

@@ -18,13 +18,14 @@ app.use( bodyParser.json() );
 app.use( API_ENTRYPOINT + 'users', userController );
 app.use( API_ENTRYPOINT + 'report', reportController );
 
-//app.use(express.static(__dirname + '../dist'))
-app.get('/bundle.js', function(req, res) {
-  res.sendFile(path.resolve(__dirname, '../dist', 'bundle.js'));
+app.use(express.static(path.resolve(__dirname, '../dist/static')));
+
+app.get('/static/bundle.js', function(req, res) {
+  res.sendFile(path.resolve(__dirname, '../dist/static/bundle.js'));
 });
 
-app.get('/', function(req, res) {
-  res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
+app.get('*', function(req, res) {
+  res.sendFile(path.resolve(__dirname, '../dist/index.html'));
 });
 
 if(!module.parent) {

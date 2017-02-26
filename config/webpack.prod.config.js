@@ -5,7 +5,7 @@ module.exports = {
   entry:  './client/src/index.jsx',
   devtool: 'cheap-module-source-map',
   output: {
-    path: path.join( __dirname, "/../dist" ),
+    path: path.join( __dirname, "/../dist/static" ),
     filename: 'bundle.js'
   },
   module: {
