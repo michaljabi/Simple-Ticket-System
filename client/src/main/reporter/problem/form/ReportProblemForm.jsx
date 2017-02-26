@@ -6,6 +6,7 @@ import { FormTextarea } from './FormTextarea';
 import { FormCaptcha } from './FormCaptcha';
 import { validateProblemReportForm } from './validateProblemReport';
 import { reportProblemAction } from '../reportProblemAction';
+import EventEmitter from "../../../../EventEmitter";
 
 const propTypes = {
   onFormCancel: React.PropTypes.func.isRequired
@@ -17,10 +18,6 @@ export class ReportTicketForm extends React.Component {
     super( props );
   }
 
-  static contextTypes = {
-    router: React.PropTypes.object.isRequired
-  }
-
   state = {
     title: '',
     component: 'page-clients',
@@ -30,6 +27,10 @@ export class ReportTicketForm extends React.Component {
     isVerified: true,
     isLoading: false
   };
+
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired
+  }
 
   handleInputChange = ( evt ) => {
     const errors = { ...this.state.errors };
@@ -52,6 +53,7 @@ export class ReportTicketForm extends React.Component {
       reportProblemAction( this.state )
         .then( ( data ) => {
           this.context.router.push( `/sts/ticket/${data.ticket}` );
+          EventEmitter.emit('messageChanged', {message: 'You have new ticket on system !'});
         } )
         .catch( ( errors ) => {
           this.setState( { errors } );
