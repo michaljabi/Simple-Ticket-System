@@ -2,7 +2,7 @@
 
 ##User-Stories
 
-No.	|As a 	|I want 	|So that 
+No.	|As a 	|I want to	|So that 
 :---:|:---|:---|:---
 1|`BReporter`|report a problem|`SPteam` can handle it
 2|`BReporter`|receive `Ticket` for my problem|I can track its progress
