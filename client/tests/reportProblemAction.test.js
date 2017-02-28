@@ -1,8 +1,8 @@
-import { reportProblemAction } from '../src/main/reporter/problem/reportProblemAction';
+import { reportProblemAction } from "../src/main/reporter/problem/reportProblemAction";
 
-describe.skip('reportProblemAction tests', () => {
+describe('reportProblemAction tests', () => {
 
-  it( 'should receive a token when Report Problem Action is fired with right data', ( done ) => {
+  it.skip( 'should receive a token when Report Problem Action is fired with right data', ( done ) => {
 
     const mockData = {
       title: 'Bug reporting',

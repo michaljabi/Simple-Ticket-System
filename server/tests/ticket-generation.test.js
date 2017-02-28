@@ -22,9 +22,9 @@ describe( 'Ticket generation', () => {
   } );
 
   const mockTicketInput = {
-    title: 'Bug reporting',
+    title: 'I saw a bug',
     component: 'page-clients',
-    description: 'page-clients',
+    description: 'Desc........',
     email: 'jabi@test.com'
   }
   const mockTicketBadInput = {
@@ -41,13 +41,12 @@ describe( 'Ticket generation', () => {
     const out2 = validateNewlyReportedBug( mockTicketBadInput );
 
     expect( out ).to.eql( { isValid: true } );
-    expect( out2 ).to.eql(
-      {
-        isValid: false,
-        errors: {
-          email: ['isEmail']
-        }
-      } );
+    expect( out2 ).to.eql( {
+      isValid: false,
+      errors: {
+        email: [ 'isEmail' ]
+      }
+    } );
   } );
 
   it( 'should send back the ticket via controller when POST requested', ( done ) => {
@@ -71,9 +70,8 @@ describe( 'Ticket generation', () => {
       .end( ( err, res ) => {
         expect( res ).to.have.status( 400 );
         expect( res.body ).to.eql( {
-          errors:
-            { email: ['isEmail'] }
-          });
+          errors: { email: [ 'isEmail' ] }
+        } );
         done();
       } );
   } );
